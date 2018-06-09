@@ -19,5 +19,10 @@ RUN ansible-galaxy install Juniper.junos
 COPY junos_install_config /etc/ansible/roles/Juniper.junos/library/.
 COPY junos_get_config /etc/ansible/roles/Juniper.junos/library/.
 
+# temp fix to enable port security disabling.
+COPY openstackcloud.py /usr/local/lib/python3.5/dist-packages/shade/openstackcloud.py
+COPY os_port.py /usr/local/lib/python3.5/dist-packages/ansible/modules/cloud/openstack/os_port.py
+
+
 EXPOSE 8080
 CMD ["python3","-m", "swagger_server"]
